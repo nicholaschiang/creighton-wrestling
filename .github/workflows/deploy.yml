@@ -31,7 +31,7 @@ jobs:
           useLockFile: false
 
       - name: 🔬 Lint
-        run: npm run lint
+        run: yarn lint
 
   typecheck:
     name: ʦ TypeScript
@@ -54,7 +54,7 @@ jobs:
           useLockFile: false
 
       - name: 🔎 Type check
-        run: npm run typecheck --if-present
+        run: yarn typecheck --if-present
 
   vitest:
     name: ⚡ Vitest
@@ -77,7 +77,7 @@ jobs:
           useLockFile: false
 
       - name: ⚡ Run vitest
-        run: npm run test -- --coverage
+        run: yarn test -- --coverage
 
   cypress:
     name: ⚫️ Cypress
@@ -112,12 +112,12 @@ jobs:
         run: npx prisma migrate reset --force
 
       - name: ⚙️ Build
-        run: npm run build
+        run: yarn build
 
       - name: 🌳 Cypress run
         uses: cypress-io/github-action@v3
         with:
-          start: npm run start:mocks
+          start: yarn start:mocks
           wait-on: "http://localhost:8811"
         env:
           PORT: "8811"
