@@ -10,43 +10,31 @@ RUN apt-get update && apt-get install -y openssl
 # Install all node_modules, including dev dependencies
 FROM base as deps
 
-WORKDIR /myapp
+WORKDIR /app
 
-ADD package.json package-lock.json ./
-RUN npm install --production=false
-
-# Setup production node_modules
-FROM base as production-deps
-
-WORKDIR /myapp
-
-COPY --from=deps /myapp/node_modules /myapp/node_modules
-ADD package.json package-lock.json ./
-RUN npm prune --production
+ADD package.json yarn.lock .yarnrc.yml ./
+ADD .yarn .yarn
+RUN yarn install --immutable --immutable-cache
 
 # Build the app
-FROM base as build
+FROM deps as build
 
-WORKDIR /myapp
-
-COPY --from=deps /myapp/node_modules /myapp/node_modules
+WORKDIR /app
 
 ADD prisma .
-RUN npx prisma generate
+RUN yarn prisma generate
 
 ADD . .
-RUN npm run build
+RUN yarn build
 
 # Finally, build the production image with minimal footprint
 FROM base
 
-WORKDIR /myapp
+WORKDIR /app
 
-COPY --from=production-deps /myapp/node_modules /myapp/node_modules
-COPY --from=build /myapp/node_modules/.prisma /myapp/node_modules/.prisma
-
-COPY --from=build /myapp/build /myapp/build
-COPY --from=build /myapp/public /myapp/public
+COPY --from=build /app/node_modules /app/node_modules
+COPY --from=build /app/build /app/build
+COPY --from=build /app/public /app/public
 ADD . .
 
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
