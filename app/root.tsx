@@ -1,9 +1,3 @@
-import type {
-  LinksFunction,
-  LoaderFunction,
-  MetaFunction,
-} from '@remix-run/node';
-import { json } from '@remix-run/node';
 import {
   Links,
   LiveReload,
@@ -12,13 +6,19 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
+import type {
+  LinksFunction,
+  LoaderFunction,
+  MetaFunction,
+} from '@remix-run/node';
+import { json } from '@remix-run/node';
 
-import tailwindStylesheetUrl from './styles/tailwind.css';
 import { getUser } from './session.server';
+import tailwindStylesheetUrl from './styles/tailwind.css';
 
-export const links: LinksFunction = () => {
-  return [{ rel: 'stylesheet', href: tailwindStylesheetUrl }];
-};
+export const links: LinksFunction = () => [
+  { rel: 'stylesheet', href: tailwindStylesheetUrl },
+];
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -30,20 +30,22 @@ type LoaderData = {
   user: Awaited<ReturnType<typeof getUser>>;
 };
 
-export const loader: LoaderFunction = async ({ request }) => {
-  return json<LoaderData>({
+export const loader: LoaderFunction = async ({ request }) =>
+  json<LoaderData>({
     user: await getUser(request),
   });
-};
 
 export default function App() {
   return (
-    <html lang='en' className='h-full'>
+    <html
+      lang='en'
+      className='h-full w-full bg-white text-gray-900 selection:bg-gray-200 selection:text-black dark:bg-gray-900 dark:text-gray-100 dark:selection:bg-gray-700 dark:selection:text-gray-100'
+    >
       <head>
         <Meta />
         <Links />
       </head>
-      <body className='h-full'>
+      <body className='h-full w-full'>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
