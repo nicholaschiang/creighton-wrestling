@@ -26,7 +26,6 @@
     "typecheck": "tsc -b && tsc -b cypress",
     "validate": "concurrently \"yarn test --run\" yarn:lint yarn:typecheck yarn:test:e2e:run"
   },
-  "prettier": {},
   "eslintIgnore": [
     "/node_modules",
     "/build",
