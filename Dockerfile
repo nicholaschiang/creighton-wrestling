@@ -33,8 +33,9 @@ FROM base
 WORKDIR /app
 
 COPY --from=build /app/node_modules /app/node_modules
+COPY --from=build /app/package.json /app/package.json
 COPY --from=build /app/build /app/build
 COPY --from=build /app/public /app/public
-ADD . .
+COPY --from=build /app/prisma /app/prisma
 
 CMD ["yarn", "start"]
