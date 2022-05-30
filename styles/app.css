@@ -7,3 +7,9 @@
     font-family: theme('fontFamily.mono');
   }
 }
+
+@layer utilities {
+  .clipped {
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 0 80%);
+  }
+}

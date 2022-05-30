@@ -1,45 +1,11 @@
 import { animated, useSpring } from '@react-spring/web';
-import { useEffect, useState } from 'react';
-import type { LinkProps } from '@remix-run/react';
-import { NavLink } from '@remix-run/react';
-import cn from 'classnames';
-
-function Link({ to, ...props }: LinkProps) {
-  const STYLE =
-    'hover:bg-gray-900 hover:text-gray-100 dark:hover:bg-gray-100 ' +
-    'dark:hover:text-gray-900';
-  return (
-    <li>
-      {typeof to === 'string' && to.startsWith('mailto') ? (
-        <a className={STYLE} href={to} {...props}>
-          {props.children}
-        </a>
-      ) : (
-        <NavLink
-          className={({ isActive }) =>
-            cn(STYLE, {
-              'cursor-not-allowed bg-gray-900 text-gray-100 dark:bg-gray-100 dark:text-gray-900':
-                isActive,
-            })
-          }
-          to={to}
-          {...props}
-        />
-      )}
-    </li>
-  );
-}
+import { useState } from 'react';
 
 export default function Index() {
-  const [now, setNow] = useState(new Date());
-  useEffect(() => {
-    const intervalId = setInterval(() => setNow(new Date()), 1000);
-    return () => clearInterval(intervalId);
-  }, []);
   const [awards, setAwards] = useState([
-    '#1 USA Champion (1994)',
-    '#1 USA Champion (1995)',
-    '#2 USA Champion (1996)',
+    '#1 NCAA Champion (1994)',
+    '#1 NCAA Champion (1995)',
+    '#2 NCAA Champion (1996)',
   ]);
   const [awardEls, setAwardEls] = useState<HTMLSpanElement[]>([]);
   const [awardIdx, setAwardIdx] = useState(1);
@@ -60,40 +26,18 @@ export default function Index() {
   });
   return (
     <main>
-      <nav className='fixed bottom-4 left-4 z-20'>
-        <ul>
-          <Link to='/gear'>gear</Link>
-          <Link to='/training'>training</Link>
-          <Link
-            to='mailto:braumon@creightonwrestling.com'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            contact
-          </Link>
-          <Link to='/'>about</Link>
-          <li>
-            {now.toLocaleString(undefined, {
-              timeZone: 'America/Los_Angeles',
-              hour: '2-digit',
-              minute: '2-digit',
-              second: '2-digit',
-              hour12: false,
-            })}
-          </li>
-        </ul>
-      </nav>
       <section className='relative flex min-h-screen items-center justify-center'>
         <video
-          className='absolute inset-0 z-0 max-h-full min-h-full min-w-full max-w-full object-cover'
+          className='clipped absolute inset-0 z-0 max-h-full min-h-full min-w-full max-w-full object-cover'
           autoPlay
           muted
           loop
         >
           <source src='/assets/wrestling.mp4' type='video/mp4' />
         </video>
-        <div className='absolute inset-0 z-10 bg-black/80' />
-        <article className='z-20 max-w-xl'>
+        <div className='clipped absolute inset-0 z-10 bg-black/60' />
+        <article className='relative z-20 max-w-xl'>
+          <div className='absolute -left-4 top-0 min-h-screen border-l' />
           <p className='relative mx-2.5 -mb-0.5 h-8 overflow-hidden whitespace-nowrap'>
             <animated.span style={style} className='absolute left-0 top-0'>
               {awards.map((name, idx) => (
@@ -113,10 +57,10 @@ export default function Index() {
               ))}
             </animated.span>
           </p>
-          <h1 className='font-sans text-8xl font-black leading-[0.85] tracking-tight'>
+          <h1 className='mb-12 font-sans text-8xl font-black leading-[0.85] tracking-tight'>
             CREIGHTON TRAINED
           </h1>
-          <p className='mx-2.5 mt-12'>
+          <p className='mx-2.5 mt-5'>
             My approach to coaching combines a unique mix of practical knowledge
             and scientific research.
           </p>
@@ -127,6 +71,32 @@ export default function Index() {
           <p className='mx-2.5 mt-5'>
             My aim is to empower you to{' '}
             <strong className='underline'>reach your highest level</strong>.
+          </p>
+        </article>
+      </section>
+      <section className='relative flex items-center justify-center'>
+        <article className='relative max-w-xl'>
+          <img
+            className='absolute -left-12 top-1/2 w-80 -translate-x-full -translate-y-1/2'
+            src='/assets/creighton.png'
+            alt=''
+          />
+          <div className='absolute -left-4 top-0 min-h-screen border-l' />
+          <h2 className='mx-2.5 font-sans text-4xl font-black tracking-tight'>
+            I am Coach Creighton
+          </h2>
+          <p className='mx-2.5 mt-5'>
+            As a wrestler, Creighton was a State Champion and two-time NCAA
+            Champion.
+          </p>
+          <p className='mx-2.5 mt-5'>
+            Coach Creighton is a certified secondary teacher with a Masters
+            Degree in Kinesiology. In 2018, Braumon earned his Gold
+            Certification, USA Wrestling’s highest level.
+          </p>
+          <p className='mx-2.5 mt-5'>
+            Coach Creighton has mastered the pedagogy of wrestling through 20
+            years of teaching experience at every level.
           </p>
         </article>
       </section>
