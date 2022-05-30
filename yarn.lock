@@ -1616,7 +1616,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^17.0.35":
+"@types/node@npm:*, @types/node@npm:>=8.1.0, @types/node@npm:^17.0.35":
   version: 17.0.36
   resolution: "@types/node@npm:17.0.36"
   checksum: 11055fde0a1e1421113849b5e32c7022911efc0be670729947bf0162970e79962d804b1eb8a9afb291380cac97cf0e684511415d586ae5fe1560322c940fe188
@@ -3463,6 +3463,7 @@ __metadata:
     react: ^17.0.2
     react-dom: ^17.0.2
     start-server-and-test: ^1.14.0
+    stripe: ^9.5.0
     tailwindcss: ^3.0.24
     tiny-invariant: ^1.2.0
     ts-node: ^10.7.0
@@ -9390,7 +9391,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qs@npm:6.10.3, qs@npm:^6.4.0":
+"qs@npm:6.10.3, qs@npm:^6.10.3, qs@npm:^6.4.0":
   version: 6.10.3
   resolution: "qs@npm:6.10.3"
   dependencies:
@@ -10661,6 +10662,16 @@ __metadata:
   version: 3.1.1
   resolution: "strip-json-comments@npm:3.1.1"
   checksum: 492f73e27268f9b1c122733f28ecb0e7e8d8a531a6662efbd08e22cccb3f9475e90a1b82cab06a392f6afae6d2de636f977e231296400d0ec5304ba70f166443
+  languageName: node
+  linkType: hard
+
+"stripe@npm:^9.5.0":
+  version: 9.5.0
+  resolution: "stripe@npm:9.5.0"
+  dependencies:
+    "@types/node": ">=8.1.0"
+    qs: ^6.10.3
+  checksum: 496090a380d748897d2ce77da9516ba25c06d81757309989c3bc52d9f11825581103f4b3ebb0af37260968f31961b3273cbbe517830d8a67882d72b933ef4587
   languageName: node
   linkType: hard
 

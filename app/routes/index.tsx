@@ -35,7 +35,7 @@ export default function Index() {
         >
           <source src='/assets/wrestling.mp4' type='video/mp4' />
         </video>
-        <div className='clipped absolute inset-0 z-10 bg-black/60' />
+        <div className='clipped absolute inset-0 z-10 bg-white/60 dark:bg-black/60' />
         <article className='relative z-20 max-w-xl'>
           <div className='absolute -left-4 top-0 min-h-screen border-l' />
           <p className='relative mx-2.5 -mb-0.5 h-8 overflow-hidden whitespace-nowrap'>

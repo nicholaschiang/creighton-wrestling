@@ -41,8 +41,8 @@ export const loader: LoaderFunction = async ({ request }) =>
 
 function Link({ to, ...props }: LinkProps) {
   const STYLE =
-    'hover:bg-gray-900 hover:text-gray-100 dark:hover:bg-gray-100 ' +
-    'dark:hover:text-gray-900';
+    'hover:bg-black hover:text-white dark:hover:bg-white ' +
+    'dark:hover:text-black';
   return (
     <li>
       {typeof to === 'string' && to.startsWith('mailto') ? (
@@ -74,7 +74,7 @@ export default function App() {
   return (
     <html
       lang='en'
-      className='h-full w-full bg-white text-gray-900 selection:bg-gray-200 selection:text-black dark:bg-black dark:text-gray-100 dark:selection:bg-gray-700 dark:selection:text-gray-100'
+      className='h-full w-full bg-white text-black selection:bg-gray-200 selection:text-black dark:bg-black dark:text-gray-100 dark:selection:bg-gray-700 dark:selection:text-gray-100'
     >
       <head>
         <Meta />
@@ -86,7 +86,7 @@ export default function App() {
             <Link to='/gear'>gear</Link>
             <Link to='/training'>training</Link>
             <Link
-              to='mailto:braumon@creightonwrestling.com'
+              to='mailto:creightontrained@gmail.com'
               target='_blank'
               rel='noopener noreferrer'
             >
