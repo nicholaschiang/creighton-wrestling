@@ -77,7 +77,7 @@ export default function Index() {
       <section className='relative flex items-center justify-center'>
         <article className='relative max-w-xl'>
           <img
-            className='absolute -left-12 top-1/2 w-80 -translate-x-full -translate-y-1/2'
+            className='absolute -left-14 top-1/2 w-80 -translate-x-full -translate-y-1/2'
             src='/assets/creighton.png'
             alt=''
           />

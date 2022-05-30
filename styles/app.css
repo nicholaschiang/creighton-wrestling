@@ -10,6 +10,6 @@
 
 @layer utilities {
   .clipped {
-    clip-path: polygon(0 0, 100% 0, 100% 95%, 0 80%);
+    clip-path: polygon(844px 693px, 268px 801px, 128px 160px, 987px 108px);
   }
 }
