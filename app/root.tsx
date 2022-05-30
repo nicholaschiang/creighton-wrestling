@@ -26,7 +26,7 @@ export const links: LinksFunction = () => [
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
-  title: 'Remix Notes',
+  title: 'Creighton Trained',
   viewport: 'width=device-width,initial-scale=1',
 });
 
@@ -72,15 +72,12 @@ export default function App() {
     return () => clearInterval(intervalId);
   }, []);
   return (
-    <html
-      lang='en'
-      className='h-full w-full bg-white text-black selection:bg-gray-200 selection:text-black dark:bg-black dark:text-gray-100 dark:selection:bg-gray-700 dark:selection:text-gray-100'
-    >
+    <html lang='en' className='dark h-full w-full'>
       <head>
         <Meta />
         <Links />
       </head>
-      <body className='h-full w-full'>
+      <body className='h-full w-full bg-white text-black selection:bg-gray-200 selection:text-black dark:bg-black dark:text-gray-100 dark:selection:bg-gray-700 dark:selection:text-gray-100'>
         <nav className='fixed bottom-4 left-4 z-20'>
           <ul>
             <Link to='/gear'>gear</Link>
