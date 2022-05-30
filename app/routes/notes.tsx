@@ -17,12 +17,12 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 export default function NotesPage() {
-  const data = useLoaderData() as LoaderData;
+  const data = useLoaderData();
   const user = useUser();
 
   return (
     <div className='flex h-full min-h-screen flex-col'>
-      <header className='flex items-center justify-between bg-slate-800 p-4 text-white'>
+      <header className='bg-slate-800 flex items-center justify-between p-4 text-white'>
         <h1 className='text-3xl font-bold'>
           <Link to='.'>Notes</Link>
         </h1>
@@ -30,7 +30,7 @@ export default function NotesPage() {
         <Form action='/logout' method='post'>
           <button
             type='submit'
-            className='rounded bg-slate-600 py-2 px-4 text-blue-100 hover:bg-blue-500 active:bg-blue-600'
+            className='bg-slate-600 text-blue-100 hover:bg-blue-500 active:bg-blue-600 rounded py-2 px-4'
           >
             Logout
           </button>
@@ -39,7 +39,7 @@ export default function NotesPage() {
 
       <main className='flex h-full bg-white'>
         <div className='h-full w-80 border-r bg-gray-50'>
-          <Link to='new' className='block p-4 text-xl text-blue-500'>
+          <Link to='new' className='text-blue-500 block p-4 text-xl'>
             + New Note
           </Link>
 
